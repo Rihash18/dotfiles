@@ -88,5 +88,13 @@ return {
     -- HTML
     vim.lsp.config("html", { capabilities = capabilities })
     vim.lsp.enable("html")
+
+    -- CSS
+    vim.lsp.config("cssls", { capabilities = capabilities })
+    vim.lsp.enable("cssls")
+
+    -- ASM
+    vim.lsp.config("asm_lsp", { capabilities = capabilities })
+    vim.lsp.enable("asm_lsp")
   end,
 }
