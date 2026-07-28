@@ -1,43 +1,49 @@
-vim.g.mapleader = " "
+vim.g.mapleader = " "           --Set <Leader> to Space
+vim.g.maplocalleader = " "      --Local Leader
 
-local keymap = vim.keymap
+local keymap = vim.keymap.set
+local opts = {noremap = true, silent = true}
 
-keymap.set("n", "<C-u>", "<C-u>zz")
-keymap.set("n", "<C-d>", "<C-d>zz")
+--RESIZE WINDOWS
+keymap("n", "<C-Up", "<cmd>resize -2<CR>", opts)
+keymap("n", "<C-Down", "<cmd>resize +2<CR>", opts)
+keymap("n", "<C-Left", "<cmd>resize -2<CR>", opts)
+keymap("n", "<C-Right", "<cmd>resize +2<CR>", opts)
 
--- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+--BETTER INDENTATION
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
 
-keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase height" })
-keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease height" })
-keymap.set("n", "<C-Left>", ":vertical resize -4<CR>", { desc = "Narrower" })
-keymap.set("n", "<C-Right>", ":vertical resize +4<CR>", { desc = "Wider" })
+--MOVE SELETED lINES
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
--- tab management
-keymap.set("n", "<leader>tn", "<cmd>BufferLineCycleNext<CR>", { desc = "Go to next buffer" })
-keymap.set("n", "<leader>tp", "<cmd>BufferLineCyclePrev<CR>", { desc = "Go to previous buffer" })
-keymap.set("n", "<leader>tx", "<cmd>bdelete<CR>", { desc = "Close current buffer" })
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "New tab" })
+--BETTER SCROLLING
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
 
--- file explorer
-keymap.set("n", "<C-n>", "<cmd>Ex<CR>", { desc = "Open file explorer" })
+--BETTER SEARCH
+keymap("n", "n", "nzzzv", opts)          -- Next result & center
+keymap("n", "N", "Nzzzv", opts)          -- Previous result & center
 
-vim.keymap.set("n", "<leader>ci", "<cmd>Telescope lsp_incoming_calls<CR>")
-vim.keymap.set("n", "<leader>co", "<cmd>Telescope lsp_outgoing_calls<CR>")
-vim.keymap.set("n", "<leader>ch", "<cmd>Telescope lsp_implementations<CR>")
-vim.keymap.set("n", "<leader>cu", "<cmd>Telescope lsp_references<CR>")
+--DELETE WITHOUT YANKING
+keymap("n", "x", '"_x', opts)
+keymap({"n", "v"}, "<leader>d", '"_d', opts)
+keymap("x", "<leader>p", '"_dP', opts)
 
-keymap.set("n", "<leader>ts", "<cmd>Theme<CR>", { desc = "Select theme" })
---keymap.set("n", "<leader>tn", "<cmd>ThemeNext<CR>", { desc = "Next theme" })
---keymap.set("n", "<leader>tp", "<cmd>ThemePrev<CR>", { desc = "Previous theme" })
+--BUFFER NAVIGATION
+keymap("n", "<leader>bn", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+keymap("n", "<leader>bp", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
+keymap("n", "<leader>bx", "<cmd>bdelete<CR>", { desc = "Close Buffer" })
+keymap("n", "<leader>bo", "<cmd>enew<CR>", { desc = "New Buffer" })
 
--- move lines
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", {silent = true})
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", {silent = true})
+--WINDOW SPLITS
+keymap("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split vertical" })
+keymap("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split horizontal" })
+keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+keymap("n", "<leader>se", "<C-w>=", { desc = "Equal splits" })
+keymap("n", "<leader>sm", "<C-w>o", { desc = "Maximize split" })
 
---toggle wrap 
-vim.keymap.set("n", "<leader>lw", '<cmd>set wrap!<CR>')
+--COLORSCHEMES
+vim.keymap.set('n', '<leader>themes', ':Telescope colorscheme<CR>', { desc = 'Telescope colorschemes' })
 

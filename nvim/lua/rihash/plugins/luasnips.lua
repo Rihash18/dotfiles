@@ -1,3 +1,12 @@
+-- What does LuaSnip do?
+--
+-- It provides three main features:
+--
+-- Expand snippets
+-- Jump between placeholders
+-- Create your own custom snippets
+
+
 return {
   "L3MON4D3/LuaSnip",
   version = "v2.*",
@@ -14,3 +23,10 @@ return {
     end)
   end,
 }
+
+
+
+
+
+
+

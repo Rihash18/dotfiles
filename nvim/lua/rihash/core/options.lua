@@ -1,59 +1,79 @@
-vim.cmd("let g:netrw_liststyle = 3")
+--Line Numbers
+vim.opt.number = true           --Show Line numbers
+vim.opt.relativenumber = true	--show Relative line numbers
 
-local opt = vim.opt
+--Tabs & Indentation
+vim.opt.tabstop = 4 	    	--Number of spaces a tab counts for
+vim.opt.shiftwidth = 4		    --Size of an indent
+vim.opt.softtabstop = 4     	--Spaces inserted when pressing Tab
+vim.opt.expandtab = true	    --convert tabs to spaces
+vim.opt.smartindent = true	    --Automatically indent new lines
 
-opt.relativenumber = true
-opt.number = true
+--Searching
+vim.opt.ignorecase = true   	--Ignore case while searching
+vim.opt.smartcase = true 	    --Unless search contains uppercase
+vim.opt.hlsearch = false	    --Don't keep search mathes highlighted
+vim.opt.incsearch = true 	    --Show matches while typing
 
--- tabs / indentation
-opt.tabstop = 8
-opt.shiftwidth = 8
-opt.expandtab = false
-opt.autoindent = true
-opt.smartindent = true
-opt.copyindent = true
-opt.preserveindent = true
+--Appearance
+vim.opt.termguicolors = true 	--Enable 24-bit RGB colors
+vim.opt.signcolumn = "yes"	    --Always show sign column
+vim.opt.cursorline = true       --Highlight current line
+vim.opt.wrap = false            --No Lines Wrap
+vim.opt.scrolloff = 8           --keep 8 lines visible above/below cursor
 
-opt.wrap = false
+--Mouse
+vim.opt.mouse = "a"             --Enable mouse in all modes
 
-opt.ignorecase = true
-opt.smartcase = true
+--Clipboard
+vim.opt.clipboard:append("unnamedplus")     --Use system clipboard
 
-opt.cursorline = true
+--Splits
+vim.opt.splitbelow = true       --Horizontal splits open below
+vim.opt.splitright = true       --Vertical splits open right
 
-opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
+--Files
+vim.opt.swapfile = false        --Disable swap files
+vim.opt.backup = false          --Disable backup files
+vim.opt.undofile = true         --Persistent undo history
 
-opt.backspace = "indent,eol,start"
+--Completion
+vim.opt.completeopt = {"menu", "menuone", "noselect"}
 
-opt.clipboard:append("unnamedplus")
+--COMMAND LINE
+vim.opt.cmdheight = 1           --Command-Line height
+vim.opt.showmode = false        --Hide "--INSERT--"
 
-opt.splitright = true
-opt.splitbelow = true
+--WHITESPACE
+vim.opt.list = true             --show whitespace characters
+vim.opt.listchars = {
+    tab = "» ",
+    trail = "·",
+    nbsp = "␣",
+}
 
-opt.foldmethod = "marker"
-opt.foldmarker = "#pragma region,#pragma endregion"
+--MISCELLANEOUS
+vim.opt.encoding = "utf-8"      --Internal encoding
+vim.opt.fileencoding = "utf-8"  --File Encoding
+vim.opt.confirm = true          --Ask before quitting unsaved buffers
 
-vim.api.nvim_create_autocmd("FileType", {
-  callback = function(args)
-    local bo = vim.bo[args.buf]
-    bo.autoindent = true
-    bo.smartindent = true
-    bo.copyindent = true
-    bo.preserveindent = true
-  end,
-})
+--Netrw (Built-in File Explorer)
+vim.g.netrw_banner = 0          --Hide banner
+vim.g.netrw_liststyle = 3       --Tree view 
 
-vim.filetype.add({
-  extension = {
-    gd = "gdscript",
-    gdshader = "gdshader",
-    gdshaderinc = "gdshaderinc",
-    tres = "gdresource",
-    tscn = "gdresource",
-  },
-  filename = {
-    ["project.godot"] = "godot",
-  },
-})
+--FOLDING
+vim.opt.foldmethod = "expr"     --Treesitter/LSP plugins may override this
+vim.opt.foldlevel = 99          --Start with folds open
+
+
+
+
+
+
+
+
+
+
+
+
+

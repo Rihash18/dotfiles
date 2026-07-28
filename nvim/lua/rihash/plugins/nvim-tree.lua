@@ -15,7 +15,7 @@ return {
       },
       view = {
         side = "left",
-        width = 35,
+        width = 30,
         preserve_window_proportions = true,
       },
       actions = {
@@ -42,3 +42,4 @@ return {
     keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file explorer" })
   end,
 }
+
