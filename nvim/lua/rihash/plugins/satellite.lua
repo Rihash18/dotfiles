@@ -4,6 +4,7 @@
 -- 🔍 Search matches
 -- 📍 Current cursor position
 -- 📌 Marks (if enabled)
+-- scroll bar on the rightside 
 
 return{
     "lewis6991/satellite.nvim",

@@ -44,6 +44,3 @@ keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
 keymap("n", "<leader>se", "<C-w>=", { desc = "Equal splits" })
 keymap("n", "<leader>sm", "<C-w>o", { desc = "Maximize split" })
 
---COLORSCHEMES
-vim.keymap.set('n', '<leader>themes', ':Telescope colorscheme<CR>', { desc = 'Telescope colorschemes' })
-

@@ -23,9 +23,9 @@ return {
 		})
 
 		local ensure_installed = {
-			
 			"lua_ls",
 			"clangd",
+            "bashls"
 		}
 
 		mason_lspconfig.setup({

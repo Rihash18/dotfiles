@@ -14,6 +14,7 @@ return {
 
     config = function()
         local telescope = require("telescope")
+        local actions = require("telescope.actions")
         local builtin = require("telescope.builtin")
 
         telescope.setup({
@@ -25,6 +26,14 @@ return {
                     prompt_position = "top",
                 },
                 sorting_strategy = "ascending",
+                mappings = {
+                    i = {
+                        ["<esc>"] = actions.close,
+                    },
+                    -- n = {
+                    --     ["<esc>"] = actions.close,
+                    -- },
+                }
             },
 
             pickers = {
@@ -44,6 +53,7 @@ return {
         -- Load extensions
         telescope.load_extension("fzf")
         telescope.load_extension("ui-select")
+        telescope.load_extension("notify")
 
         -- Keymaps
         vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
@@ -53,5 +63,9 @@ return {
 
         -- Theme picker with live preview
         vim.keymap.set("n", "<leader>ft", builtin.colorscheme, { desc = "Themes" })
+
+        --Notification keymaps
+        vim.keymap.set("n", "<leader>fn", "<cmd>Telescope notify<CR>", { desc = "Find Notifications" })
+        vim.keymap.set("n", "<leader>cn", "<cmd>NotificationsClear<CR>", { desc = "Clear Notifications History" })
     end,
 }

@@ -56,11 +56,6 @@ return {
         opts.desc = "Show Line Diagnostics"
         keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-        opts.desc = "Previous Diagnostic"
-        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-        opts.desc = "Next Diagnostic"
-        keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
         --------------------
         -- Utilities
@@ -123,6 +118,27 @@ return {
     -- Language Servers
     ----------------------------------------------------------------------
 
+    --lua
+    enable("lua_ls", {
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = "vim",
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = vim.api.nvim_get_runtime_file("", true),
+          },
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    })
+
     -- C / C++
     enable("clangd", {
       cmd = {
@@ -150,5 +166,8 @@ return {
 
     -- Assembly
     enable("asm_lsp")
+
+    --bash scripting
+    enable("bashls")
   end,
 }
