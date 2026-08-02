@@ -19,7 +19,9 @@ install_config() {
     local name="$1"
     create_backup "$name"
 
-    cp -r "./${name}/" "$HOME/.config/"
+    SCRIPT_DIR=$( cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd )
+
+    cp -r "SCRIPT_DIR/${name}/" "$HOME/.config/"
     printf "\n${name} Installed successfully ....\n\n"
 }
 
