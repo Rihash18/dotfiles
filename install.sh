@@ -21,7 +21,7 @@ install_config() {
 
     SCRIPT_DIR=$( cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd )
 
-    cp -r "SCRIPT_DIR/${name}/" "$HOME/.config/"
+    cp -r "${SCRIPT_DIR}/${name}/" "$HOME/.config/"
     printf "\n${name} Installed successfully ....\n\n"
 }
 
