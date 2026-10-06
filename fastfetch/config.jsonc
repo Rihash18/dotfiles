@@ -64,7 +64,7 @@
     {
       "type": "cpu",
       "key": "cpu",
-      "temp": false,
+      "temp": true,
       "showPeCoreCount": false
     },
     {
